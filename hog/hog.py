@@ -1,6 +1,6 @@
-"""CS 61A Presents The Game of Hog."""
+"git remote add origin https://github.com/whoback/CS61A.git""CS 61A Presents The Game of Hog."""
 
-from dice import six_sided, four_sided, make_test_dice
+from dice import * 
 from ucb import main, trace, interact
 
 GOAL_SCORE = 100  # The goal of Hog is to score 100 points.
@@ -22,6 +22,18 @@ def roll_dice(num_rolls, dice=six_sided):
     assert num_rolls > 0, 'Must roll at least once.'
     # BEGIN PROBLEM 1
     "*** YOUR CODE HERE ***"
+    ret = 0
+    i = 0
+    pig_out = False
+    while i < num_rolls:
+        r = dice()
+        if r == 1:
+            pig_out = True
+        ret = ret + r
+        i = i + 1
+    if pig_out == True:
+        return 1
+    return ret
     # END PROBLEM 1
 
 
