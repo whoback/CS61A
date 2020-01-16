@@ -82,7 +82,38 @@ def is_swap(player_score, opponent_score):
     Return whether the two scores should be swapped
     """
     # BEGIN PROBLEM 4
-    "*** YOUR CODE HERE ***"
+    "*** YOURCODE HERE ***"
+    player_first = 0
+    player_last = 0
+    opponent_first = 0
+    opponent_last = 0
+    
+    def get_first(n):
+        while n / 10 > 10:
+            n = n/10
+        return n // 10
+   
+    def get_last(n):
+        return n % 10
+    
+    if player_score < 10:
+        player_first = player_score
+        player_last = player_score
+    else:
+        player_first = get_first(player_score)
+        player_last = get_last(player_score)
+    
+    if opponent_score < 10:
+        opponent_first = opponent_score
+        opponent_last = opponent_score
+    else:
+        opponent_first = get_first(opponent_score)
+        opponent_last = get_last(opponent_score)
+
+    if player_first*player_last == opponent_first*opponent_last:
+        return True
+    else:
+        return False
     # END PROBLEM 4
 
 
