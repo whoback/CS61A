@@ -179,6 +179,7 @@ def play(strategy0, strategy1, score0=0, score1=0, dice=six_sided,
 
         if(is_swap(score0,score1)):
                 score0, score1 = score1, score0
+        say = say(score0, score1)
         player = other(player)
     
     # END PROBLEM 5
