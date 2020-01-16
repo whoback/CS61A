@@ -155,15 +155,28 @@ def play(strategy0, strategy1, score0=0, score1=0, dice=six_sided,
     # BEGIN PROBLEM 5
     "*** YOUR CODE HERE ***"
     b = True
+    prev_roll0 = 0
+    prev_roll1 = 0
     while b:
         if player == 0:
-            score0 = score0 + take_turn(strategy0(score0,score1), score1, dice)
+            num_roll0 = strategy0(score0,score1)
+            if(feral_hogs):
+                if abs(prev_roll0 - num_roll0) == 2:
+                    score0 = score0 + 3
+            prev_roll0 = num_roll0
+            score0 = score0 + take_turn(num_roll0, score1, dice)
             if score0 >= goal:
                 b = False
         else:
-            score1 = score1 + take_turn(strategy1(score1,score0), score0, dice)
+            num_roll1 = strategy1(score1,score0)
+            if(feral_hogs):
+                if abs(prev_roll1 - num_roll1) == 2:
+                    score1 = score1 + 3
+            prev_roll1 = num_roll1
+            score1 = score1 + take_turn(num_roll1, score0, dice)
             if score1 >= goal:
                 b = False
+
         if(is_swap(score0,score1)):
                 score0, score1 = score1, score0
         player = other(player)
