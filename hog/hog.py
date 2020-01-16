@@ -154,6 +154,20 @@ def play(strategy0, strategy1, score0=0, score1=0, dice=six_sided,
     player = 0  # Which player is about to take a turn, 0 (first) or 1 (second)
     # BEGIN PROBLEM 5
     "*** YOUR CODE HERE ***"
+    b = True
+    while b:
+        if player == 0:
+            score0 = score0 + take_turn(strategy0(score0,score1), score1, dice)
+            if score0 >= goal:
+                b = False
+        else:
+            score1 = score1 + take_turn(strategy1(score1,score0), score0, dice)
+            if score1 >= goal:
+                b = False
+        if(is_swap(score0,score1)):
+                score0, score1 = score1, score0
+        player = other(player)
+    
     # END PROBLEM 5
     # (note that the indentation for the problem 6 prompt (***YOUR CODE HERE***) might be misleading)
     # BEGIN PROBLEM 6
