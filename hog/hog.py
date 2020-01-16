@@ -45,6 +45,13 @@ def free_bacon(score):
     assert score < 100, 'The game should be over.'
     # BEGIN PROBLEM 2
     "*** YOUR CODE HERE ***"
+    if score < 10:
+        return 10
+    first = score // 10
+    last = score % 10
+    minimum = min(first, last)
+    return 10 - minimum
+
     # END PROBLEM 2
 
 
